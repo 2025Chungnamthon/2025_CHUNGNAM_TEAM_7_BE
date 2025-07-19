@@ -6,6 +6,7 @@ import chungnam.ton.stmp.global.payload.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,17 +16,17 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class ExceptionHandlerAdvice {
 
     // api 관련 예외에 대한 핸들링
-//    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
-//    public ResponseEntity<?> handleHttpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException e) {
-//        final ErrorResponse response = ErrorResponse.builder()
-//                .httpStatus(HttpStatus.METHOD_NOT_ALLOWED)
-//                .code(e.getMessage())
-//                .clazz(e.getMethod())
-//                .message(e.getMessage())
-//                .build();
-//        ApiResponse apiResponse = ApiResponse.builder().check(false).information(response).build();
-//        return new ResponseEntity<>(apiResponse, HttpStatus.METHOD_NOT_ALLOWED);
-//    }
+    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+    public ResponseEntity<?> handleHttpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException e) {
+        final ErrorResponse response = ErrorResponse.builder()
+                .httpStatus(HttpStatus.METHOD_NOT_ALLOWED)
+                .code(e.getMessage())
+                .clazz(e.getMethod())
+                .message(e.getMessage())
+                .build();
+        ApiResponse apiResponse = ApiResponse.builder().check(false).information(response).build();
+        return new ResponseEntity<>(apiResponse, HttpStatus.METHOD_NOT_ALLOWED);
+    }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<?> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
