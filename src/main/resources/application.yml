@@ -1,0 +1,73 @@
+# Spring Jpa Setting
+spring:
+  application:
+    name: stmp
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    generate-ddl: true
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  jackson:
+    time-zone: Asia/Seoul
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://stamp.cdeem8oy23sc.ap-northeast-2.rds.amazonaws.com:3306/db7stamp?serverTimezone=Asia/Seoul
+    username: admin
+    password: jHZDtocx8x2Gcucd8Mht
+  sql:
+    init:
+      platform: mysql
+
+  security:
+    oauth2:
+      client:
+        registration:
+          kakao:
+            client-id: fb9abd1c0e7e68db1336baa235b8fb3d
+            #            client-secret:
+            authorization-grant-type: authorization_code
+            redirect-uri: http://43.200.191.61/oauth
+            scope:
+              - account_email
+              - profile_nickname
+        provider:
+          kakao:
+            authorization-uri: https://kauth.kakao.com/oauth/authorize
+            token-uri: https://kauth.kakao.com/oauth/token
+            user-info-uri: https://kapi.kakao.com/v2/user/me
+            user-name-attribute: id
+
+logging:
+  level:
+    root: info
+    org:
+      springframework: debug
+      hibernate:
+        SQL: debug
+
+app:
+  # CORS 설정
+  cors:
+    allowed-origins: http://localhost:3000,http://localhost:8080,http://43.200.191.61:8080
+  # jwt 설정
+  auth:
+    token-secret: A74246BEW9F725R6C2LOEFF9FA010E393E3554C0QF94ABCB8FC8097E9EE87D3CFLBE4SFA2G4C6H5E3F681321F9CXF38C22TC4C3CH1105C23912B16FQE45BE4EC
+    access-token-expiration-msec: 360000000000000
+    refresh-token-expiration-msec: 96000000000
+
+# kakao map api key
+#kakao:
+#  api:
+#    key:
