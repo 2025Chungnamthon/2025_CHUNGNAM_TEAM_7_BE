@@ -24,7 +24,6 @@ public class Stamp extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    @JsonIgnore
     private User user;      // FK: user_id
 
     @Column(name = "scan_time")
