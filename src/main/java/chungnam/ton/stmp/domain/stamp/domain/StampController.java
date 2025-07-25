@@ -1,11 +1,16 @@
 package chungnam.ton.stmp.domain.stamp.domain;
 
+import chungnam.ton.stmp.domain.stamp.domain.dto.StampInfoDto;
+import chungnam.ton.stmp.domain.stamp.domain.dto.StampRequestDto;
+import chungnam.ton.stmp.domain.stamp.domain.dto.StampResponseDto;
+import chungnam.ton.stmp.domain.user.domain.UserPrincipal;
+import java.time.LocalDateTime;
 import java.util.List;
-import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,33 +24,40 @@ public class StampController {
 
     private final StampService stampService;
 
-    // QR 코드 스캔 및 스탬프 적립
     @PostMapping("/scan")
-    public ResponseEntity<String> scanStamp(@RequestBody StampDto request) {
-        try {
-            stampService.scanStamp(request.getUserId(), request.getQrId());
-            return ResponseEntity.ok("스탬프가 성공적으로 적립되었습니다.");
-        } catch (IllegalArgumentException | IllegalStateException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
-    }
+    public ResponseEntity<StampResponseDto> scanStamp(
+            @AuthenticationPrincipal UserPrincipal principal,
+            @RequestBody StampRequestDto request
+    ) {
+        Long userId = principal.getUser().getId();
+        String qrId   = request.getQrId();
+        Long marketId = request.getMarketId();
 
-    @GetMapping("/user/{userId}")
-    public ResponseEntity<List<StampDto>> getStampsByUser(@PathVariable Long userId) {
-        List<StampDto> response = stampService.getStampsByUser(userId).stream()
-                .map(StampDto::new) // Stamp 객체를 StampDto로 변환
-                .toList();
+        StampResponseDto response =
+                stampService.scanStamp(userId, qrId, marketId);
+
         return ResponseEntity.ok(response);
     }
 
 
-    // 특정 기간 동안의 스탬프 조회
-    @GetMapping("/StartDateBetween")
-    public ResponseEntity<List<StampDto>> getStampsByStartDateBetween(@RequestParam String startDate, @RequestParam String endDate) {
-        List<StampDto> response = stampService.getStampsByStartDateBetween(startDate, endDate).stream()
-                .map(StampDto::new) // Stamp 객체를 StampDto로 변환
-                .toList();
-        return ResponseEntity.ok(response);
+    @GetMapping
+    public ResponseEntity<List<StampInfoDto>> getMyStamps(
+            @AuthenticationPrincipal UserPrincipal principal
+    ) {
+        Long userId = principal.getUser().getId();
+        List<StampInfoDto> stamps = stampService.getStampsByUser(userId);
+        return ResponseEntity.ok(stamps);
+    }
+
+    @GetMapping("/period")
+    public ResponseEntity<List<StampInfoDto>> getStampsByPeriod(
+            @RequestParam("from")
+            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime from,
+            @RequestParam("to")
+            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime to
+    ) {
+        List<StampInfoDto> stamps = stampService.getStampsByPeriod(from, to);
+        return ResponseEntity.ok(stamps);
     }
 
 }
