@@ -38,6 +38,7 @@ public enum ErrorCode {
     // JWT 토큰
     JWT_EXPIRED_ERROR(HttpStatus.BAD_REQUEST, null, "JWT 토큰이 만료되었습니다."),
     INVALID_JWT_ERROR(HttpStatus.BAD_REQUEST, null, "유효하지 않은 JWT 표현입니다."),
+    REFRESH_TOKEN_NOT_FOUND(HttpStatus.BAD_REQUEST, null, "저장되지 않은 refresh 토큰입니다."),
 
     // File Upload
     INVALID_IMAGE_FORMAT(HttpStatus.BAD_REQUEST, null, "지원하지 않는 이미지 형식입니다. jpg, jpeg, png, HEIC, gif 형식만 지원합니다."),
