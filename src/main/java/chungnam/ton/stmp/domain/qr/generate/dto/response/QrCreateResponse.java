@@ -1,4 +1,4 @@
-package chungnam.ton.stmp.qr.generate.dto.response;
+package chungnam.ton.stmp.domain.qr.generate.dto.response;
 
 import lombok.Builder;
 import lombok.Getter;

@@ -1,6 +1,6 @@
-package chungnam.ton.stmp.qr.generate.service;
+package chungnam.ton.stmp.domain.qr.generate.service;
 
-import chungnam.ton.stmp.qr.generate.domain.QrCode;
+import chungnam.ton.stmp.domain.qr.generate.domain.QrCode;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

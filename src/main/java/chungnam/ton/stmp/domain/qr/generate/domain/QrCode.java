@@ -1,4 +1,4 @@
-package chungnam.ton.stmp.qr.generate.domain;
+package chungnam.ton.stmp.domain.qr.generate.domain;
 
 import jakarta.persistence.*;
 import lombok.Getter;

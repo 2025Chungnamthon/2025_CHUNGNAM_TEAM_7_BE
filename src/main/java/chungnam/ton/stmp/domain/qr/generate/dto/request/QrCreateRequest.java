@@ -1,4 +1,4 @@
-package chungnam.ton.stmp.qr.generate.dto.request;
+package chungnam.ton.stmp.domain.qr.generate.dto.request;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;

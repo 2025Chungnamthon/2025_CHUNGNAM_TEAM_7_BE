@@ -1,11 +1,11 @@
-package chungnam.ton.stmp.qr.generate.presentation;
+package chungnam.ton.stmp.domain.qr.generate.presentation;
 
-import chungnam.ton.stmp.qr.generate.domain.QrCode;
-import chungnam.ton.stmp.qr.generate.dto.request.QrCreateRequest;
-import chungnam.ton.stmp.qr.generate.dto.response.QrCreateResponse;
-import chungnam.ton.stmp.qr.generate.service.QrCodeService;
+import chungnam.ton.stmp.domain.qr.generate.domain.QrCode;
+import chungnam.ton.stmp.domain.qr.generate.dto.request.QrCreateRequest;
+import chungnam.ton.stmp.domain.qr.generate.dto.response.QrCreateResponse;
+import chungnam.ton.stmp.domain.qr.generate.service.QrCodeService;
 
-import chungnam.ton.stmp.qr.generate.service.QrGenerateResult;
+import chungnam.ton.stmp.domain.qr.generate.service.QrGenerateResult;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
