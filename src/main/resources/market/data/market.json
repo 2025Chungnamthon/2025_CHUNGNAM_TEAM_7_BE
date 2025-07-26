@@ -1,0 +1,857 @@
+[
+  {
+    "marketName": "공주산성시장",
+    "region": "충청남도 공주시",
+    "address": "충청남도 공주시 용당길 22",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": true,
+      "쇼핑카트_보유여부": true,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "유구시장",
+    "region": "충청남도 공주시",
+    "address": "충청남도 공주시 유구읍 시장길 28",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": false,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "산성시장활성화구역",
+    "region": "충청남도 공주시",
+    "address": "충청남도 공주시 국고개길 11",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": false,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": false,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "금산수삼센타",
+    "region": "충청남도 금산군",
+    "address": "충청남도 금산군 금산읍 인삼약초로 24",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": true,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "금산금빛시장(금산시장)",
+    "region": "충청남도 금산군",
+    "address": "충청남도 금산군 금산읍 금산천길 98",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": false,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "금산국제인삼시장(금산인삼국제시장)",
+    "region": "충청남도 금산군",
+    "address": "충청남도 금산군 금산읍 인삼약초로 45",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": false,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "중부프라자",
+    "region": "충청남도 금산군",
+    "address": "충청남도 금산군 금산읍 비범로 19",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": false,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "금산인삼전통시장",
+    "region": "충청남도 금산군",
+    "address": "충청남도 금산군 금산읍 건삼전1길 20-8",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": false,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": false,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "금산인삼쇼핑센타",
+    "region": "충청남도 금산군",
+    "address": "충청남도 금산군 금산읍 인삼광장로 47",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": true,
+      "고객휴게실_보유여부": true,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "금산약초시장",
+    "region": "충청남도 금산군",
+    "address": "충청남도 금산군 비단로 144",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": true,
+      "고객휴게실_보유여부": false,
+      "쇼핑카트_보유여부": true,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "마전시장",
+    "region": "충청남도 금산군",
+    "address": "충청남도 금산군 추부면 마전1길 38",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": false,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": false
+    }
+  },
+  {
+    "marketName": "강경대흥시장",
+    "region": "충청남도 논산시",
+    "address": "충청남도 논산시 강경읍 대흥로 23- 1",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": false,
+      "쇼핑카트_보유여부": true,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "강경젓갈시장",
+    "region": "충청남도 논산시",
+    "address": "충청남도 논산시 강경읍 금백로 45",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": false,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": false
+    }
+  },
+  {
+    "marketName": "화지중앙시장",
+    "region": "충청남도 논산시",
+    "address": "충청남도 논산시 중앙로492번길  20",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": false,
+      "쇼핑카트_보유여부": true,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "연산전통시장",
+    "region": "충청남도 논산시",
+    "address": "충청남도 논산시 연산면 연산4길 10-8",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": true,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "신평시장",
+    "region": "충청남도 당진시",
+    "address": "충청남도 당진시 신평면 신평로 804-1",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": false,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": false,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": false
+    }
+  },
+  {
+    "marketName": "당진전통시장",
+    "region": "충청남도 당진시",
+    "address": "충청남도 당진시 당진시장길 100",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": true,
+      "쇼핑카트_보유여부": true,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "합덕전통시장",
+    "region": "충청남도 당진시",
+    "address": "충청남도 당진시 합덕읍 버그내2길 128-42",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": false,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "동부시장",
+    "region": "충청남도 보령시",
+    "address": "충청남도 보령시 구상가길 14-5",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": true,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "보령중앙시장",
+    "region": "충청남도 보령시",
+    "address": "충청남도 보령시 대천동 중앙시장1길 2",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": true,
+      "쇼핑카트_보유여부": true,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "보령한내시장",
+    "region": "충청남도 보령시",
+    "address": "충청남도 보령시 정화로길 13",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": true,
+      "고객휴게실_보유여부": true,
+      "쇼핑카트_보유여부": true,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "현대시장(현대상가시장)",
+    "region": "충청남도 보령시",
+    "address": "충청남도 보령시 대흥로 16",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": false,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": false
+    }
+  },
+  {
+    "marketName": "대천항종합수산물시장",
+    "region": "충청남도 보령시",
+    "address": "충청남도 보령시 대천항로 370",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": true,
+      "고객휴게실_보유여부": true,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "웅천시장",
+    "region": "충청남도 보령시",
+    "address": "충청남도 보령시 웅천읍 장터4길 24",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": true,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "부여시장",
+    "region": "충청남도 부여군",
+    "address": "충청남도 부여군 부여읍 성왕로173번길 12",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": false,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": true,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "부여중앙시장",
+    "region": "충청남도 부여군",
+    "address": "충청남도 부여군 부여읍 중앙로13번길 14-3",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": false,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "부여 새시장",
+    "region": "충청남도 부여군",
+    "address": "충청남도 부여군 부여읍 부여로 12",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": false,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": false,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": false
+    }
+  },
+  {
+    "marketName": "홍산시장",
+    "region": "충청남도 부여군",
+    "address": "충청남도 부여군 홍산면 홍산시장로 45-10",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": false,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "대산종합시장",
+    "region": "충청남도 서산시",
+    "address": "충청남도 서산시 대산읍 충의로 1942",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": false,
+      "엘리베이터_에스컬레이터_보유여부": true,
+      "고객휴게실_보유여부": false,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "서산동부전통시장(동부시장)",
+    "region": "충청남도 서산시",
+    "address": "충청남도 서산시 시장5로 15",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": true,
+      "고객휴게실_보유여부": true,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "해미시장",
+    "region": "충청남도 서산시",
+    "address": "충청남도 서산시 읍성마을2길 16",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": true,
+      "고객휴게실_보유여부": true,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "해미종합시장",
+    "region": "충청남도 서산시",
+    "address": "충청남도 서산시 해미면 남문1로 47  48 2동 ",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": false,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": false,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "서천특화시장",
+    "region": "충청남도 서천군",
+    "address": "충청남도 서천군 서천읍 충절로 42",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": true,
+      "고객휴게실_보유여부": true,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "장항전통시장",
+    "region": "충청남도 서천군",
+    "address": "충청남도 서천군 장항읍 성화로 104",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": true,
+      "고객휴게실_보유여부": false,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "둔포전통시장(둔포시장)",
+    "region": "충청남도 아산시",
+    "address": "충청남도 아산시 둔포면 둔포면로 25번길 15",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": false,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": false,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "온양온천시장(온양전통시장)",
+    "region": "충청남도 아산시",
+    "address": "충청남도 아산시 시장길 29",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": true,
+      "쇼핑카트_보유여부": true,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "고덕시장",
+    "region": "충청남도 예산군",
+    "address": "충청남도 예산군 고덕면 용고길 342",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": false,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": false,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "광시시장",
+    "region": "충청남도 예산군",
+    "address": "충청남도 예산군 광시면 예당로 165-22",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": false,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": false,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "덕산시장",
+    "region": "충청남도 예산군",
+    "address": "충청남도 예산군 덕산면 읍내서길 2-1",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": false,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "역전시장",
+    "region": "충청남도 예산군",
+    "address": "충청남도 예산군 역전로 84",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": false,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "예산상설시장",
+    "region": "충청남도 예산군",
+    "address": "충청남도 예산군 형제고개로 967",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": true,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "예산시장",
+    "region": "충청남도 예산군",
+    "address": "충청남도 예산군 예산읍 형제고개로 967",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": true,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "천안역전시장",
+    "region": "충청남도 천안시",
+    "address": "충청남도 천안시 동남구 공설시장1길 9",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": true,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "천안중앙시장(구 남산중앙시장)",
+    "region": "충청남도 천안시",
+    "address": "충청남도 천안시 동남구 사직로 7",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": true,
+      "쇼핑카트_보유여부": true,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "병천시장",
+    "region": "충청남도 천안시",
+    "address": "충청남도 천안시 동남구 병천면 아우내장터1길 46",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": false,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": false,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "성환이화시장",
+    "region": "충청남도 천안시",
+    "address": "충청남도 천안시 서북구 성환읍 성환중앙로 50",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": false,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": true,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "성정시장",
+    "region": "충청남도 천안시",
+    "address": "충청남도 천안시 서북구 양지21길 31",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": true,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "청양전통시장",
+    "region": "충청남도 청양군",
+    "address": "충청남도 청양군 칠갑산로6길 6",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": true,
+      "고객휴게실_보유여부": false,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "정산시장",
+    "region": "충청남도 청양군",
+    "address": "충청남도 청양군 정산면 정현길 54",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": false,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "태안동부시장(태안특산물전통시장)",
+    "region": "충청남도 태안군",
+    "address": "충청남도 태안군 시장4길 32",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": true,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "안면도수산시장(안면도장터)",
+    "region": "충청남도 태안군",
+    "address": "충청남도 태안군 안면읍 장터로 104",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": true,
+      "고객휴게실_보유여부": false,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "태안서부시장",
+    "region": "충청남도 태안군",
+    "address": "충청남도 태안군 남문리 시장2길 38-4",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": true,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "갈산전통시장",
+    "region": "충청남도 홍성군",
+    "address": "충청남도 홍성군 갈산면 상촌로 29",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": false,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "광천전통시장",
+    "region": "충청남도 홍성군",
+    "address": "충청남도 홍성군 광천읍 광천로 285",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": true,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "광천문화시장",
+    "region": "충청남도 홍성군",
+    "address": "충청남도 홍성군 광천읍 광천로323번길 15-1 일원",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": false,
+      "쇼핑카트_보유여부": false,
+      "시장전용 고객주차장_보유여부": false
+    }
+  },
+  {
+    "marketName": "홍성상설시장",
+    "region": "충청남도 홍성군",
+    "address": "충청남도 홍성군 홍성읍 아문길 60",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": true,
+      "쇼핑카트_보유여부": true,
+      "시장전용 고객주차장_보유여부": true
+    }
+  },
+  {
+    "marketName": "홍성전통시장",
+    "region": "충청남도 홍성군",
+    "address": "충청남도 홍성군 홍성읍 홍성천길 242",
+    "imgUrl": "",
+    "mainProducts": [],
+    "landmarks": [],
+    "facilities": {
+      "아케이드 보유 여부": true,
+      "엘리베이터_에스컬레이터_보유여부": false,
+      "고객휴게실_보유여부": true,
+      "쇼핑카트_보유여부": true,
+      "시장전용 고객주차장_보유여부": true
+    }
+  }
+]
