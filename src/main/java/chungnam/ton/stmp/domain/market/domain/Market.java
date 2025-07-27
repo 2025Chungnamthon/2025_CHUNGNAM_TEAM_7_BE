@@ -1,7 +1,9 @@
 package chungnam.ton.stmp.domain.market.domain;
 
 import chungnam.ton.stmp.domain.common.BaseEntity;
+import chungnam.ton.stmp.domain.favorite.Fav;
 import jakarta.persistence.*;
+import java.util.ArrayList;
 import lombok.*;
 
 import java.util.List;
@@ -26,4 +28,7 @@ public class Market extends BaseEntity {
 
     @Embedded
     private Facility facilities;
+
+    @OneToMany(mappedBy = "market", cascade = CascadeType.REMOVE)
+    private List<Fav> favoritedBy = new ArrayList<>();
 }
