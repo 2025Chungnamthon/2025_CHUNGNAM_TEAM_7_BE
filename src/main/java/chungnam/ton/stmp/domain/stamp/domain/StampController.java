@@ -31,10 +31,12 @@ public class StampController {
     ) {
         Long userId = principal.getUser().getId();
         String qrId   = request.getQrId();
+        String placeName = request.getPlaceName();
         Long marketId = request.getMarketId();
 
+
         StampResponseDto response =
-                stampService.scanStamp(userId, qrId, marketId);
+                stampService.scanStamp(userId, qrId, placeName, marketId);
 
         return ResponseEntity.ok(response);
     }

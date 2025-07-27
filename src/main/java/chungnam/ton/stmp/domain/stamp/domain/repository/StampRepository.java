@@ -2,7 +2,7 @@ package chungnam.ton.stmp.domain.stamp.domain.repository;
 
 import chungnam.ton.stmp.domain.stamp.domain.Stamp;
 import chungnam.ton.stmp.domain.user.domain.User;
-import chungnam.ton.stmp.qr.generate.domain.QrCode;
+import chungnam.ton.stmp.domain.qr.generate.domain.QrCode;
 import java.time.LocalDateTime;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;

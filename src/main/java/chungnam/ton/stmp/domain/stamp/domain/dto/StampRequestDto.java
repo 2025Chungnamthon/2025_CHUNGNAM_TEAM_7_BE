@@ -7,5 +7,6 @@ import lombok.Getter;
 @AllArgsConstructor
 public class StampRequestDto {
     private String qrId;
+    private String placeName;
     private Long marketId;
 }

@@ -2,7 +2,7 @@ package chungnam.ton.stmp.domain.stamp.domain;
 
 import chungnam.ton.stmp.domain.common.BaseEntity;
 import chungnam.ton.stmp.domain.user.domain.User;
-import chungnam.ton.stmp.qr.generate.domain.QrCode;
+import chungnam.ton.stmp.domain.qr.generate.domain.QrCode;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -25,6 +25,8 @@ public class Stamp extends BaseEntity {
 
     @Column(name = "scan_time", nullable = false)
     private LocalDateTime scanTime;
+
+
 
     public static Stamp create(User user, QrCode qrCode) {
         Stamp stamp = new Stamp();

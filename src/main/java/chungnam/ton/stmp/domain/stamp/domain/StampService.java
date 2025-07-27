@@ -1,5 +1,7 @@
 package chungnam.ton.stmp.domain.stamp.domain;
 
+import chungnam.ton.stmp.domain.market.domain.Market;
+import chungnam.ton.stmp.domain.market.domain.repository.MarketRepository;
 import chungnam.ton.stmp.domain.stamp.domain.dto.StampInfoDto;
 import chungnam.ton.stmp.domain.stamp.domain.dto.StampResponseDto;
 import chungnam.ton.stmp.domain.stamp.domain.repository.StampRepository;
@@ -7,8 +9,8 @@ import chungnam.ton.stmp.domain.user.domain.User;
 import chungnam.ton.stmp.domain.user.domain.repository.UserRepository;
 import chungnam.ton.stmp.global.error.DefaultException;
 import chungnam.ton.stmp.global.payload.ErrorCode;
-import chungnam.ton.stmp.qr.generate.domain.QrCode;
-import chungnam.ton.stmp.qr.generate.domain.repository.QrCodeRepository;
+import chungnam.ton.stmp.domain.qr.generate.domain.QrCode;
+import chungnam.ton.stmp.domain.qr.generate.domain.repository.QrCodeRepository;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,14 +25,16 @@ public class StampService {
     private final StampRepository stampRepository;
     private final UserRepository userRepository;
     private final QrCodeRepository qrCodeRepository;
+    private final MarketRepository marketRepository;
 
     // QR 코드 스캔 및 스탬프 적립
-    public StampResponseDto scanStamp(Long userId, String qrId, Long marketId) {
+    public StampResponseDto scanStamp(Long userId, String qrId, String placeName, Long marketId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new DefaultException(ErrorCode.USER_NOT_FOUND_ERROR));
 
         QrCode qrCode = qrCodeRepository.findById(qrId)
                 .orElseThrow(() -> new DefaultException(ErrorCode.INVALID_OPTIONAL_ISPRESENT));
+
 
         // 만료 여부 체크
         if (qrCode.getExpiredAt().isBefore(LocalDateTime.now())) {
@@ -42,10 +46,20 @@ public class StampService {
             throw new DefaultException(ErrorCode.INVALID_PARAMETER);
         }
 
+        // Market 조회
+        Market market = marketRepository.findById(marketId)
+                .orElseThrow(() -> new DefaultException(ErrorCode.MARKET_NOT_FOUND_ERROR));
+
         Stamp stamp = Stamp.create(user, qrCode);
         stampRepository.save(stamp);
 
-        return new StampResponseDto("스탬프가 적립되었습니다.", stamp.getScanTime());
+        return new StampResponseDto(
+                "스탬프가 적립되었습니다.",
+                stamp.getScanTime(),
+                market.getId(),
+                market.getMarketName(),
+                qrCode.getPlaceName()
+        );
     }
 
     // 유저별 스탬프 조회
@@ -57,7 +71,9 @@ public class StampService {
         return stampRepository.findAllByUser(user).stream()
                 .map(s -> new StampInfoDto(
                         s.getQrCode().getQrId(),
-                        s.getScanTime()
+                        s.getScanTime(),
+                        s.getQrCode().getMarketId(),
+                        s.getQrCode().getPlaceName()
                 ))
                 .collect(Collectors.toList());
     }
@@ -69,7 +85,9 @@ public class StampService {
         return stampRepository.findAllByScanTimeBetween(from, to).stream()
                 .map(s -> new StampInfoDto(
                         s.getQrCode().getQrId(),
-                        s.getScanTime()
+                        s.getScanTime(),
+                        s.getQrCode().getMarketId(),
+                        s.getQrCode().getPlaceName()
                 ))
                 .collect(Collectors.toList());
     }

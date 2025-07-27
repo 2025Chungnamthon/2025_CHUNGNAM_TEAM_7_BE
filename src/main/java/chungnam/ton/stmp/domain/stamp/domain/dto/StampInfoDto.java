@@ -10,5 +10,6 @@ import lombok.Getter;
 public class StampInfoDto {
     private String qrId;            // 어떤 QR을 찍었는지
     private LocalDateTime scanTime;
-
+    private Long marketId;
+    private String placeName;
 }

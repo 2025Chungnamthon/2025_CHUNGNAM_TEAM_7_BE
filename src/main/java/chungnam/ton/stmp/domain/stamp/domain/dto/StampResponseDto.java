@@ -9,4 +9,7 @@ import lombok.Getter;
 public class StampResponseDto {
     private String message;
     private LocalDateTime scanTime;
+    private Long marketId;
+    private String marketName;
+    private String placeName;
 }
