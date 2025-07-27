@@ -1,8 +1,10 @@
-package chungnam.ton.stmp.qr.generate.domain;
+package chungnam.ton.stmp.domain.qr.generate.domain;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import chungnam.ton.stmp.domain.market.domain.Market;
+
 
 import java.time.LocalDateTime;
 
@@ -28,8 +30,14 @@ public class QrCode {
     @Column(name="duration")
     private  Integer duration;
 
-   // @ManyToOne(fetch = FetchType.LAZY)
     @Column(name="marketId", nullable = false)
     private Long marketId;
 
+    //@ManyToOne(fetch = FetchType.LAZY)
+    //@JoinColumn(name = "market_id", nullable = false)
+    //private Market market;
+
+
+    @Column(name = "place_Name", nullable = false)
+    private String placeName;
 }

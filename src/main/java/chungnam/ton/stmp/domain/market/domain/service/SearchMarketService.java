@@ -6,6 +6,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
 import java.io.InputStream;
@@ -26,16 +27,26 @@ public class SearchMarketService {
     @PostConstruct
     public void init() {
         try {
-            InputStream inputStream = getClass().getResourceAsStream("/chungnam/ton/stmp/domain/market/data/market.json");
-            List<Market> markets = objectMapper.readValue(inputStream, new TypeReference<List<Market>>() {});
-            marketRepository.saveAll(markets);
+            if(marketRepository.count() == 0) {
+                log.info("market.json 초기 데이터 로딩");
+
+                ClassPathResource resource = new ClassPathResource("market/data/market.json");
+                InputStream inputStream = resource.getInputStream();
+
+                List<Market> markets = objectMapper.readValue(inputStream, new TypeReference<List<Market>>() {});
+                marketRepository.saveAll(markets);
+                
+                log.info("market.json 데이터 저장 완료");
+            } else {
+                log.info("이미 마켓 데이터 존재하여 초기화 생략");
+            }
         } catch (Exception e) {
             log.error("시장 Json 로드 실패", e);
         }
     }
 
     public List<Market> searchMarkets(String keyword) {
-        log.info("검색 요청 keyword: {}", keyword);
+        log.info("검색 요청: {}", keyword);
         return marketRepository.findByMarketNameContainingOrRegionContaining(keyword, keyword);
     }
 }
