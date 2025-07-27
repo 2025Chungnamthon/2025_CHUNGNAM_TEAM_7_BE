@@ -26,7 +26,7 @@ public class QrCreateController {
     @PostMapping("/generate")
     @ResponseBody
     public QrCreateResponse generateQrCode(@RequestBody QrCreateRequest request) throws WriterException, IOException {
-        QrGenerateResult result = qrCodeService.createQr(request.getMarketId());
+        QrGenerateResult result = qrCodeService.createQr(request.getMarketId(),request.getPlaceName());
         QrCode qrCode = result.getQrCode();
         String base64Image = result.getBase64Image();
 
@@ -36,14 +36,18 @@ public class QrCreateController {
                 .build();
     }
     @GetMapping("/page")
-    public String qrPage(Model model) throws WriterException, IOException {
-        Long marketId = 1L;  // 고정 마켓
-        QrGenerateResult result = qrCodeService.createQr(marketId);
+    public String qrPage(@RequestParam("marketId") Long marketId,
+                         @RequestParam("placeName") String placeName,
+                         Model model) throws WriterException, IOException {
+       // marketId = 1L;  // 고정 마켓
+        //placeName = "입구 부스"; // 시장 내 장소명
+
+        QrGenerateResult result = qrCodeService.createQr(marketId, placeName);
 
         model.addAttribute("qrImageBase64", result.getBase64Image());
         model.addAttribute("expiredAt", result.getQrCode().getExpiredAt().truncatedTo(ChronoUnit.SECONDS).toString());
         model.addAttribute("durationMinutes", result.getQrCode().getDuration());
-
+        model.addAttribute("placeName", placeName);
 
         return "qr/page";
     }

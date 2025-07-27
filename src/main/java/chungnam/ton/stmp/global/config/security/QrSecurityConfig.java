@@ -2,6 +2,7 @@ package chungnam.ton.stmp.global.config.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
@@ -12,11 +13,13 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import java.util.List;
 
 @Configuration
+@Order(1)  // 우선순위
 public class QrSecurityConfig {
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain qrfilterChain(HttpSecurity http) throws Exception {
         http
+                .securityMatcher("/qr/**")  // ✅ /qr/** 경로만 이 설정 사용
                 .csrf(csrf -> csrf.disable())          // CSRF 비활성화
                 .formLogin(login -> login.disable())   // 폼 로그인 비활성화
                 .httpBasic(basic -> basic.disable())   // HTTP Basic 인증 비활성화
@@ -30,6 +33,7 @@ public class QrSecurityConfig {
                         .requestMatchers(HttpMethod.GET,
                                 "/",
                                 "/qr/page",
+                                "/qr/page/**",
                                 "/qr.html",
                                 "/favicon.ico",
                                 "/css/**", "/js/**", "/images/**",

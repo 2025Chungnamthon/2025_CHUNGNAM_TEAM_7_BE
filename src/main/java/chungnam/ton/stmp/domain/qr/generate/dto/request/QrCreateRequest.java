@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class QrCreateRequest {
-    @NotNull(message = "marketId는 필수 입력입니다.")
     private Long marketId;
+
+    private String placeName;
 }
