@@ -22,7 +22,7 @@ public class FavService {
 
     // 즐겨찾기 추가
     @Transactional
-    public FavResponseDto addFavorite(Long userId, FavRequestDto req) {
+    public FavResponseDto addBookmark(Long userId, FavRequestDto req) {
         // 1) User/Market 존재 검사
         User user = userRepo.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 사용자입니다."));
@@ -51,7 +51,7 @@ public class FavService {
 
     // 즐겨찾기 삭제
     @Transactional
-    public void removeFavorite(Long userId, Long marketId) {
+    public void removeBookmark(Long userId, Long marketId) {
         User user = userRepo.getReferenceById(userId);
         Market market = marketRepo.getReferenceById(marketId);
         // deleteByUserAndMarket 내부에서 해당 레코드 없으면 조용히 넘어갑니다.
@@ -60,7 +60,7 @@ public class FavService {
 
     // 즐겨찾기 목록 조회
     @Transactional(readOnly = true)
-    public List<FavResponseDto> listFavorites(Long userId) {
+    public List<FavResponseDto> listBookmarks(Long userId) {
         User user = userRepo.getReferenceById(userId);
         return favRepo.findAllByUser(user).stream()
                 .map(f -> FavResponseDto.builder()
