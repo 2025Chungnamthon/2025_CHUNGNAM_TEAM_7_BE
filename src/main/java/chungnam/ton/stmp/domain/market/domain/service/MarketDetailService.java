@@ -38,8 +38,6 @@ public class MarketDetailService {
                 .marketName(market.getMarketName())
                 .region(market.getRegion())
                 .address(market.getAddress())
-//                .mainProducts(market.getMainProducts())
-//                .landmarks(market.getLandmarks())
                 .facilityCount(facilityList.size())
                 .facilities(facilityList)
                 .build();

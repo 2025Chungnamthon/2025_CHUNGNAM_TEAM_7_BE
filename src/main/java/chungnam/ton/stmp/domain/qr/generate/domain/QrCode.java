@@ -25,15 +25,11 @@ public class QrCode extends BaseEntity {
     private LocalDateTime expiredAt;
 
     @Column(name="duration")
-    private  Integer duration;
-
-    //@Column(name="marketId", nullable = false)
-    //private Long marketId;
+    private Integer duration;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "market_id", nullable = false)
     private Market market;
-
 
     @Column(name = "place_name", nullable = false)
     private String placeName;
