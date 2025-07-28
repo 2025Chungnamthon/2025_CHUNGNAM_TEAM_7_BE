@@ -57,7 +57,7 @@ public class UserServiceImpl implements UserService {
     public JwtResponse signupAndLogin(SignupRequest request) {
         addUser(request);
 
-        return loginAndGetToken(new LoginRequest(request.username(), request.email(), request.password()));
+        return loginAndGetToken(new LoginRequest(request.username(), request.password()));
     }
 
     @Override
