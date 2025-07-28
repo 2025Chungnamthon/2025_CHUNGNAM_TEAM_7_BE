@@ -30,13 +30,15 @@ public class RewardService {
 
     // userId를 기반으로 유저가 가진 모든 상품권을 조회 및 상세 정보 전달
     public List<RewardResponse> getRewardsByUserId(String rawToken) {
-        Long userId = jwtUtil.getUserIdFromToken(rawToken);
+        String token = jwtUtil.getJwt(rawToken);
+        Long userId = jwtUtil.getUserIdFromToken(token);
         List<RewardResponse> rewardResponses = rewardRepository.findRewardByUserId(userId);
         return rewardResponses;
     }
 
     public List<RewardResponse> claimRewardsForMarket(String rawToken, Long marketId) {
-        Long userId = jwtUtil.getUserIdFromToken(rawToken);
+        String token = jwtUtil.getJwt(rawToken);
+        Long userId = jwtUtil.getUserIdFromToken(token);
         User user = userRepository.findById(userId).orElseThrow(() -> new DefaultException(ErrorCode.USER_NOT_FOUND_ERROR));
 
         int required = marketRepository.findById(marketId)
