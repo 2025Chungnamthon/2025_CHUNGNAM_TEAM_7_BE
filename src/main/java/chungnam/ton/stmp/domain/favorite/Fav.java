@@ -31,6 +31,4 @@ public class Fav extends BaseEntity {
     @JoinColumn(name = "market_id", nullable = false,
             foreignKey = @ForeignKey(name = "fk_favo_market"))
     private Market market;
-
-
 }
