@@ -1,30 +1,33 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>QR 페이지</title>
-    <meta charset="UTF-8">
-    <script th:inline="javascript">
-        /*<![CDATA[*/
-        document.addEventListener("DOMContentLoaded", function () {
-            const duration = [[${durationMinutes}]];
-            setTimeout(() => {
-                // 현재 주소 그대로 다시 요청 (쿼리 파라미터 유지)
-                window.location.href = window.location.href;
-            }, duration * 10 * 1000);
-        });
-        /*]]>*/
-    </script>
-</head>
-<body>
-<h1>QR 코드</h1>
+    <!DOCTYPE html>
+    <html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>QR 페이지</title>
+        <meta charset="UTF-8">
+        <script th:inline="javascript">
+            /*<![CDATA[*/
+            document.addEventListener("DOMContentLoaded", function () {
+                //const duration = [[${durationMinutes}]];
+                const secs = [[${durationSeconds}]];
 
-<!-- QR 이미지 표시 -->
-<img th:src="'data:image/png;base64,' + ${qrImageBase64}" alt="QR Code"/>
 
-<!-- 만료 시각 표시 -->
-<p>만료 시각: <span th:text="${expiredAt}"></span></p>
+                setTimeout(() => {
 
-<!-- 장소명 표시 (옵션) -->
-<p>장소: <span th:text="${placeName}"></span></p>
-</body>
-</html>
+                    window.location.href = window.location.href;
+                }, secs * 10 * 1000);
+            });
+            /*]]>*/
+        </script>
+    </head>
+    <body>
+    <h1>QR 코드</h1>
+
+    <!-- QR 이미지 표시 -->
+    <img th:src="'data:image/png;base64,' + ${qrImageBase64}" alt="QR Code"/>
+
+    <!-- 만료 시각 표시 -->
+    <p>만료 시각: <span th:text="${expiredAt}"></span></p>
+
+    <!-- 장소명 표시 (옵션) -->
+    <p>장소: <span th:text="${placeName}"></span></p>
+    </body>
+    </html>
