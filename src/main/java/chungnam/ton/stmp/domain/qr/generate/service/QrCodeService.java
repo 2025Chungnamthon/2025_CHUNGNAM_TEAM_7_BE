@@ -42,8 +42,6 @@ public class QrCodeService {
             throw new IllegalArgumentException("유효하지 않은 장소입니다.");
 
         }
-        int durationSeconds = 10;  // 테스트용: 10초 뒤 만료
-
 
         QrCode qrCode = qrCodeRepository
                 .findByMarket_IdAndPlaceName(marketId, placeName)
@@ -55,15 +53,16 @@ public class QrCodeService {
                     // 임시값 세팅: NOT NULL 제약 있는 필드 모두 초기화
                     tmp.setExpiredAt(LocalDateTime.now().plusSeconds(10)); // 테스트용 만료
                     tmp.setQrImageUrl("");    // 나중에 덮어쓸 임시 문자열
-                    tmp.setDuration(durationSeconds);
+                    tmp.setDuration(1);
                     return qrCodeRepository.save(tmp);  // 1단계 INSERT: ID 확보 및 NOT NULL 만족
                 });
 
         int duration = 1;
-        LocalDateTime createdAt = qrCode.getCreatedAt();
+        LocalDateTime createdAt = LocalDateTime.now();
         //LocalDateTime expiredAt = createdAt.plusMinutes(duration);
         QrGenerateResult result = new QrGenerateResult(qrCode, base64Image);
 
+        int durationSeconds = 10;  // 테스트용: 10초 뒤 만료
         LocalDateTime expiredAt = createdAt.plusSeconds(durationSeconds);
 
         Map<EncodeHintType, Object> hints = new HashMap<>();
@@ -74,13 +73,13 @@ public class QrCodeService {
 
 
         if (qrCode.getExpiredAt() == null || createdAt.isAfter(qrCode.getExpiredAt())) {
-            String setQrImageUrl = String.format(
+            String payload = String.format(
                     "{\"qrId\":\"%s\",\"marketId\":%d,\"placeName\":\"%s\",\"nonce\":\"%s\"}",
                     qrCode.getId(), marketId, placeName, UUID.randomUUID()
             );
-            qrCode.setQrImageUrl(setQrImageUrl);
+            qrCode.setQrImageUrl(payload);
             qrCode.setExpiredAt(createdAt.plusSeconds(durationSeconds));
-            qrCode.setDuration(durationSeconds);
+            qrCode.setDuration(duration);
             qrCode = qrCodeRepository.save(qrCode);  // 2단계 UPDATE: 진짜 payload 반영
         }
 
