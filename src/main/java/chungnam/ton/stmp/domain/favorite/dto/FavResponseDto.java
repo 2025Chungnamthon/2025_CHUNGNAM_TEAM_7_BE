@@ -5,6 +5,7 @@ import lombok.Getter;
 
 @Getter
 @Builder
+@Schema(description = "즐겨찾기 API respons DTO입니다.")
 public class FavResponseDto {
 
     private Long favId;
