@@ -2,13 +2,15 @@ package chungnam.ton.stmp.domain.market.domain.service;
 
 import chungnam.ton.stmp.domain.market.domain.Facility;
 import chungnam.ton.stmp.domain.market.domain.Market;
-import chungnam.ton.stmp.domain.market.domain.dto.MarketDetail;
+import chungnam.ton.stmp.domain.market.domain.dto.response.MarketDetailResponse;
+import chungnam.ton.stmp.domain.market.domain.dto.request.SearchMarketDetailRequest;
 import chungnam.ton.stmp.domain.market.domain.repository.MarketRepository;
+import chungnam.ton.stmp.global.error.DefaultException;
+import chungnam.ton.stmp.global.payload.ErrorCode;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class MarketDetailService {
@@ -18,11 +20,12 @@ public class MarketDetailService {
         this.marketRepository = marketRepository;
     }
 
-    public Optional<MarketDetail> getMarketDetailById(Long id) {
-        return marketRepository.findById(id).map(this::convertDto);
+    public MarketDetailResponse getMarketDetailById(SearchMarketDetailRequest searchMarketDetailRequest) {
+        Long id = searchMarketDetailRequest.marketId();
+        return marketRepository.findById(id).map(this::convertDto).orElseThrow(() -> new DefaultException(ErrorCode.MARKET_NOT_FOUND_ERROR));
     }
 
-    private MarketDetail convertDto(Market market) {
+    private MarketDetailResponse convertDto(Market market) {
         Facility f = market.getFacilities();
         List<String> facilityList = new ArrayList<>();
         if (f.isArcade()) facilityList.add("아케이드");
@@ -31,12 +34,12 @@ public class MarketDetailService {
         if (f.isShoppingCart()) facilityList.add("쇼핑카트");
         if (f.isParkingLot()) facilityList.add("시장전용 고객주차장");
 
-        return MarketDetail.builder()
+        return MarketDetailResponse.builder()
                 .marketName(market.getMarketName())
                 .region(market.getRegion())
                 .address(market.getAddress())
-                .mainProducts(market.getMainProducts())
-                .landmarks(market.getLandmarks())
+//                .mainProducts(market.getMainProducts())
+//                .landmarks(market.getLandmarks())
                 .facilityCount(facilityList.size())
                 .facilities(facilityList)
                 .build();

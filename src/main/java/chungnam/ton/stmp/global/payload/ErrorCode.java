@@ -20,20 +20,12 @@ public enum ErrorCode {
     USER_ALREADY_EXISTS_ERROR(HttpStatus.CONFLICT,null,"는 이미 존재하는 회원입니다"),
     INACTIVE_USER_ERROR(HttpStatus.FORBIDDEN,null,"권한이 없는 사용자입니다"),
 
-    //Review Error
-    REVIEW_NOT_FOUND_ERROR(HttpStatus.NOT_FOUND, null , "리뷰를 찾을 수 없습니다."),
-    FORBIDDEN_REVIEW_UPDATE(HttpStatus.FORBIDDEN, null, "본인의 리뷰만 수정할 수 있습니다."),
-    DUPLICATE_REVIEW_TAGS(HttpStatus.BAD_REQUEST, null , "리뷰 태그에 중복된 항목이 존재합니다."),
-    FORBIDDEN_REVIEW_DELETE(HttpStatus.FORBIDDEN, null, "본인의 리뷰만 삭제할 수 있습니다."),
-
     // Bookmark Error
     BOOKMARK_ALREADY_EXISTS_ERROR(HttpStatus.CONFLICT, null, "이미 북마크된 장소입니다."),
     BOOKMARK_NOT_FOUND_ERROR(HttpStatus.NOT_FOUND, null , "해당 장소를 북마크하지 않았습니다."),
 
-    // Reservation Error
-    RESERVATION_ALREADY_EXISTS_ERROR(HttpStatus.CONFLICT, null, "이미 예약이 찼습니다."),
-    RESERVATION_NOT_FOUND(HttpStatus.NOT_FOUND, null, "존재하지 않는 예약입니다."),
-    FORBIDDEN_RESERVATION_DELETE(HttpStatus.FORBIDDEN, null, "본인의 예약만 취소할 수 있습니다."),
+    // Market Error
+    MARKET_NOT_FOUND_ERROR(HttpStatus.NOT_FOUND, null, "해당 id의 시장이 존재하지 않습니다."),
 
     // JWT 토큰
     JWT_EXPIRED_ERROR(HttpStatus.BAD_REQUEST, null, "JWT 토큰이 만료되었습니다."),
