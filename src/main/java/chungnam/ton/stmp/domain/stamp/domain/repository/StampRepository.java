@@ -6,9 +6,7 @@ import chungnam.ton.stmp.domain.qr.generate.domain.QrCode;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-
-
-public interface StampRepository extends JpaRepository<Stamp, Long> {
+public interface StampRepository extends JpaRepository<Stamp, Long>, StampQueryDslRepository {
     long countByUser(User user);
     boolean existsByUserAndQrCode(User user, QrCode qrCode);
 

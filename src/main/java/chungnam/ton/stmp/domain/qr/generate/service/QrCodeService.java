@@ -43,6 +43,8 @@ public class QrCodeService {
 
         }
 
+        int duration = 10;
+
         QrCode qrCode = qrCodeRepository
                 .findByMarket_IdAndPlaceName(marketId, placeName)
                 .orElseGet(() -> {
@@ -53,17 +55,14 @@ public class QrCodeService {
                     // 임시값 세팅: NOT NULL 제약 있는 필드 모두 초기화
                     tmp.setExpiredAt(LocalDateTime.now().plusSeconds(10)); // 테스트용 만료
                     tmp.setQrImageUrl("");    // 나중에 덮어쓸 임시 문자열
-                    tmp.setDuration(1);
+                    tmp.setDuration(duration);
                     return qrCodeRepository.save(tmp);  // 1단계 INSERT: ID 확보 및 NOT NULL 만족
                 });
 
-        int duration = 1;
         LocalDateTime createdAt = LocalDateTime.now();
-        //LocalDateTime expiredAt = createdAt.plusMinutes(duration);
         QrGenerateResult result = new QrGenerateResult(qrCode, base64Image);
 
-        int durationSeconds = 10;  // 테스트용: 10초 뒤 만료
-        LocalDateTime expiredAt = createdAt.plusSeconds(durationSeconds);
+        LocalDateTime expiredAt = createdAt.plusSeconds(duration);
 
         Map<EncodeHintType, Object> hints = new HashMap<>();
         hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
@@ -78,7 +77,7 @@ public class QrCodeService {
                     qrCode.getId(), marketId, placeName, UUID.randomUUID()
             );
             qrCode.setQrImageUrl(payload);
-            qrCode.setExpiredAt(createdAt.plusSeconds(durationSeconds));
+            qrCode.setExpiredAt(createdAt.plusSeconds(duration));
             qrCode.setDuration(duration);
             qrCode = qrCodeRepository.save(qrCode);  // 2단계 UPDATE: 진짜 payload 반영
         }

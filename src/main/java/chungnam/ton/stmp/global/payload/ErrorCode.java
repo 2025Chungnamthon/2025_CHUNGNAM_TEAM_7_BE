@@ -27,6 +27,9 @@ public enum ErrorCode {
     // Market Error
     MARKET_NOT_FOUND_ERROR(HttpStatus.NOT_FOUND, null, "해당 id의 시장이 존재하지 않습니다."),
 
+    // Stamp Error
+    STAMP_NOT_COMPLETE(HttpStatus.BAD_REQUEST, null, "모든 스탬프를 보유하고 있지 않습니다."),
+
     // JWT 토큰
     JWT_EXPIRED_ERROR(HttpStatus.BAD_REQUEST, null, "JWT 토큰이 만료되었습니다."),
     INVALID_JWT_ERROR(HttpStatus.BAD_REQUEST, null, "유효하지 않은 JWT 표현입니다."),

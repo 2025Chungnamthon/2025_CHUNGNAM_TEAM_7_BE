@@ -31,7 +31,7 @@ public class Stamp extends BaseEntity {
     private LocalDateTime scanTime;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "market_id", nullable = false)
+    @JoinColumn(name = "market_id", nullable = false, columnDefinition = "BIGINT")
     private Market market; // FK: market_id
 
 

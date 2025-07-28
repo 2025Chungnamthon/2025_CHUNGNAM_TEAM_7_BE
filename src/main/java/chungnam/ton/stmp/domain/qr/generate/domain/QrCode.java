@@ -14,8 +14,6 @@ import java.util.Base64;
 @Setter
 @Entity
 @Table(name="qr_code")
-
-
 public class QrCode extends BaseEntity {
 
     @Column(name="qr_image_url", nullable = false)
@@ -25,15 +23,11 @@ public class QrCode extends BaseEntity {
     private LocalDateTime expiredAt;
 
     @Column(name="duration")
-    private  Integer duration;
-
-    //@Column(name="marketId", nullable = false)
-    //private Long marketId;
+    private Integer duration;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "market_id", nullable = false)
     private Market market;
-
 
     @Column(name = "place_name", nullable = false)
     private String placeName;

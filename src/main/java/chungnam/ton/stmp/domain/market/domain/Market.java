@@ -16,12 +16,7 @@ public class Market extends BaseEntity {
     private String region;
     private String address;
     private String imgUrl;
-
-//    @ElementCollection
-//    private List<String> mainProducts;
-//
-//    @ElementCollection
-//    private List<String> landmarks;
+    private int stampAmount;
 
     @Embedded
     private Facility facilities;
