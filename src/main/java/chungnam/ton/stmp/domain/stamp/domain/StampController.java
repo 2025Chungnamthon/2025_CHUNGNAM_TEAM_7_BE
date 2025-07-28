@@ -1,65 +1,51 @@
 package chungnam.ton.stmp.domain.stamp.domain;
 
-import chungnam.ton.stmp.domain.stamp.domain.dto.StampInfoDto;
 import chungnam.ton.stmp.domain.stamp.domain.dto.StampRequestDto;
 import chungnam.ton.stmp.domain.stamp.domain.dto.StampResponseDto;
-import chungnam.ton.stmp.domain.user.domain.UserPrincipal;
-import java.time.LocalDateTime;
-import java.util.List;
+import chungnam.ton.stmp.global.payload.ResponseCustom;
+import chungnam.ton.stmp.global.util.jwt.JwtUtil;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.bind.annotation.RestController;
 
+@Tag(name = "스탬프 API", description = "qr 스캔 후 스탬프 적립 API입니다.")
 @RestController
-@RequestMapping("/stamps")
+@RequestMapping("/api/stamps")
 @RequiredArgsConstructor
 public class StampController {
 
     private final StampService stampService;
+    private final JwtUtil jwtUtil;
 
+    @Operation(summary = "스탬프 저장 (Scan)", description = "JWT로 인증된 사용자가 QR 코드를 스캔해 스탬프를 저장합니다.")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "저장 성공",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = StampResponseDto.class)
+                    )
+            ),
+            @ApiResponse(responseCode = "400", description = "잘못된 입력"),
+            @ApiResponse(responseCode = "401", description = "인증 실패")
+    })
     @PostMapping("/scan")
-    public ResponseEntity<StampResponseDto> scanStamp(
-            @AuthenticationPrincipal UserPrincipal principal,
-            @RequestBody StampRequestDto request
+    public ResponseCustom<StampResponseDto> scanStamp(
+            @RequestHeader("Authorization") String bearerToken,
+            @Valid @RequestBody StampRequestDto request
     ) {
-        Long userId = principal.getUser().getId();
-        String qrId   = request.getQrId();
-        String placeName = request.getPlaceName();
-        Long marketId = request.getMarketId();
+        String rawToken = bearerToken.replace("Bearer ", "");
+        Long userId = jwtUtil.getUserIdFromToken(rawToken);
 
-
-        StampResponseDto response =
-                stampService.scanStamp(userId, qrId, placeName, marketId);
-
-        return ResponseEntity.ok(response);
+        StampResponseDto dto = stampService.scanStamp(userId, request.qrId());
+        return ResponseCustom.OK(dto);
     }
-
-
-    @GetMapping
-    public ResponseEntity<List<StampInfoDto>> getMyStamps(
-            @AuthenticationPrincipal UserPrincipal principal
-    ) {
-        Long userId = principal.getUser().getId();
-        List<StampInfoDto> stamps = stampService.getStampsByUser(userId);
-        return ResponseEntity.ok(stamps);
     }
-
-    @GetMapping("/period")
-    public ResponseEntity<List<StampInfoDto>> getStampsByPeriod(
-            @RequestParam("from")
-            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime from,
-            @RequestParam("to")
-            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime to
-    ) {
-        List<StampInfoDto> stamps = stampService.getStampsByPeriod(from, to);
-        return ResponseEntity.ok(stamps);
-    }
-
-}
