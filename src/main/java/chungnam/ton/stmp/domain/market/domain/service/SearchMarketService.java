@@ -1,6 +1,8 @@
 package chungnam.ton.stmp.domain.market.domain.service;
 
 import chungnam.ton.stmp.domain.market.domain.Market;
+import chungnam.ton.stmp.domain.market.domain.dto.request.SearchMarketRequest;
+import chungnam.ton.stmp.domain.market.domain.dto.response.MarketResponse;
 import chungnam.ton.stmp.domain.market.domain.repository.MarketRepository;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -45,8 +47,10 @@ public class SearchMarketService {
         }
     }
 
-    public List<Market> searchMarkets(String keyword) {
+    public List<MarketResponse> searchMarkets(SearchMarketRequest searchMarketRequest) {
+        String keyword = searchMarketRequest.keyword();
         log.info("검색 요청: {}", keyword);
-        return marketRepository.findByMarketNameContainingOrRegionContaining(keyword, keyword);
+        List<MarketResponse> responses = marketRepository.findByMarketNameContainingOrRegionContaining(keyword, keyword).stream().map(MarketResponse::fromEntity).toList();
+        return responses;
     }
 }

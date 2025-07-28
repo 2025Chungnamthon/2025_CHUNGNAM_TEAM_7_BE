@@ -34,7 +34,7 @@ public class FavController {
             }),
             @ApiResponse(responseCode = "400", description = "실패")
     })
-    @Parameter(name = "request", description = "즐겨찾기 requestDto", required = true)
+//    @Parameter(name = "request", description = "즐겨찾기 requestDto", required = true)
     @PostMapping
     public ResponseCustom<FavResponseDto> addBookmark(
             @Parameter(description = "Accesstoken을 입력해주세요.", required = true) @RequestHeader("bearerToken") String bearerToken,
