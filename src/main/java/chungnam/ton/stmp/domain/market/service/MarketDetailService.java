@@ -1,9 +1,9 @@
-package chungnam.ton.stmp.domain.market.domain.service;
+package chungnam.ton.stmp.domain.market.service;
 
 import chungnam.ton.stmp.domain.market.domain.Facility;
 import chungnam.ton.stmp.domain.market.domain.Market;
-import chungnam.ton.stmp.domain.market.domain.dto.response.MarketDetailResponse;
-import chungnam.ton.stmp.domain.market.domain.dto.request.SearchMarketDetailRequest;
+import chungnam.ton.stmp.domain.market.dto.response.MarketDetailResponse;
+import chungnam.ton.stmp.domain.market.dto.request.SearchMarketDetailRequest;
 import chungnam.ton.stmp.domain.market.domain.repository.MarketRepository;
 import chungnam.ton.stmp.global.error.DefaultException;
 import chungnam.ton.stmp.global.payload.ErrorCode;

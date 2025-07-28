@@ -1,4 +1,4 @@
-package chungnam.ton.stmp.domain.stamp.domain.dto;
+package chungnam.ton.stmp.domain.stamp.dto.request;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;

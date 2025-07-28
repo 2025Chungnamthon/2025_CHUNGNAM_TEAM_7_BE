@@ -14,8 +14,6 @@ import java.util.Base64;
 @Setter
 @Entity
 @Table(name="qr_code")
-
-
 public class QrCode extends BaseEntity {
 
     @Column(name="qr_image_url", nullable = false)

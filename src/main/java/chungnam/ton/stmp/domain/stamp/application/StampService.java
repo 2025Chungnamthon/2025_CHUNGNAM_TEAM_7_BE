@@ -1,9 +1,11 @@
-package chungnam.ton.stmp.domain.stamp.domain;
+package chungnam.ton.stmp.domain.stamp.application;
 
 import chungnam.ton.stmp.domain.market.domain.Market;
 import chungnam.ton.stmp.domain.market.domain.repository.MarketRepository;
-import chungnam.ton.stmp.domain.stamp.domain.dto.StampResponseDto;
+import chungnam.ton.stmp.domain.stamp.domain.Stamp;
+import chungnam.ton.stmp.domain.stamp.dto.reponse.StampResponseDto;
 import chungnam.ton.stmp.domain.stamp.domain.repository.StampRepository;
+import chungnam.ton.stmp.domain.stamp.dto.reponse.StampStatusResponse;
 import chungnam.ton.stmp.domain.user.domain.User;
 import chungnam.ton.stmp.domain.user.domain.repository.UserRepository;
 import chungnam.ton.stmp.global.error.DefaultException;
@@ -44,7 +46,7 @@ public class StampService {
         }
 
         // Market 조회
-        Market market = marketRepository.findById(qrCode.getMarketId())
+        Market market = marketRepository.findById(qrCode.getMarket().getId())
                 .orElseThrow(() -> new DefaultException(ErrorCode.MARKET_NOT_FOUND_ERROR));
 
         Stamp stamp = Stamp.builder()
@@ -65,6 +67,15 @@ public class StampService {
                 .placeName(qrCode.getPlaceName())
                 .totalStampCount((int) total)
                 .build();
+    }
+
+    public StampStatusResponse getStampStatus(Long userId, Long marketId) {
+        int required = marketRepository.findById(marketId)
+                .orElseThrow(() -> new DefaultException(ErrorCode.MARKET_NOT_FOUND_ERROR))
+                .getStampAmount();
+        int actual = stampRepository.countByUserIdAndMarketId(userId, marketId);
+
+        return new StampStatusResponse(actual, required);
     }
 }
 

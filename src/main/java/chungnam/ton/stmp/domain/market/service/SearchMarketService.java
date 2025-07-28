@@ -1,8 +1,8 @@
-package chungnam.ton.stmp.domain.market.domain.service;
+package chungnam.ton.stmp.domain.market.service;
 
 import chungnam.ton.stmp.domain.market.domain.Market;
-import chungnam.ton.stmp.domain.market.domain.dto.request.SearchMarketRequest;
-import chungnam.ton.stmp.domain.market.domain.dto.response.MarketResponse;
+import chungnam.ton.stmp.domain.market.dto.request.SearchMarketRequest;
+import chungnam.ton.stmp.domain.market.dto.response.MarketResponse;
 import chungnam.ton.stmp.domain.market.domain.repository.MarketRepository;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

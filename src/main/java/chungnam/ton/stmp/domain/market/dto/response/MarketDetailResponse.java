@@ -1,4 +1,4 @@
-package chungnam.ton.stmp.domain.market.domain.dto.response;
+package chungnam.ton.stmp.domain.market.dto.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;

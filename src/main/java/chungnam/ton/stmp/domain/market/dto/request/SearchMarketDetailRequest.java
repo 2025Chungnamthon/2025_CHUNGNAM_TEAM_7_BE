@@ -1,4 +1,4 @@
-package chungnam.ton.stmp.domain.market.domain.dto.request;
+package chungnam.ton.stmp.domain.market.dto.request;
 
 public record SearchMarketDetailRequest(
         Long marketId

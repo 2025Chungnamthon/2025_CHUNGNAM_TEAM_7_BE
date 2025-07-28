@@ -1,12 +1,12 @@
-package chungnam.ton.stmp.domain.market.domain.controller;
+package chungnam.ton.stmp.domain.market.controller;
 
 import chungnam.ton.stmp.domain.favorite.dto.FavResponseDto;
-import chungnam.ton.stmp.domain.market.domain.dto.request.SearchMarketDetailRequest;
-import chungnam.ton.stmp.domain.market.domain.dto.request.SearchMarketRequest;
-import chungnam.ton.stmp.domain.market.domain.dto.response.MarketDetailResponse;
-import chungnam.ton.stmp.domain.market.domain.dto.response.MarketResponse;
-import chungnam.ton.stmp.domain.market.domain.service.MarketDetailService;
-import chungnam.ton.stmp.domain.market.domain.service.SearchMarketService;
+import chungnam.ton.stmp.domain.market.dto.request.SearchMarketDetailRequest;
+import chungnam.ton.stmp.domain.market.dto.request.SearchMarketRequest;
+import chungnam.ton.stmp.domain.market.dto.response.MarketDetailResponse;
+import chungnam.ton.stmp.domain.market.dto.response.MarketResponse;
+import chungnam.ton.stmp.domain.market.service.MarketDetailService;
+import chungnam.ton.stmp.domain.market.service.SearchMarketService;
 import chungnam.ton.stmp.global.payload.ResponseCustom;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -40,7 +40,7 @@ public class MarketController {
             }),
             @ApiResponse(responseCode = "400", description = "실패")
     })
-    @Parameter(name = "request", description = "즐겨찾기 requestDto", required = true)
+//    @Parameter(name = "request", description = "즐겨찾기 requestDto", required = true)
     @GetMapping("/detail")
     public ResponseCustom<?> getMarketDetail(@RequestBody SearchMarketDetailRequest searchMarketDetailRequest) {
         MarketDetailResponse response = marketDetailService.getMarketDetailById(searchMarketDetailRequest);

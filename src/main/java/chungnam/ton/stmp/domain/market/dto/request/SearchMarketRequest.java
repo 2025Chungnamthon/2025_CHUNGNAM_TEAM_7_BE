@@ -1,4 +1,4 @@
-package chungnam.ton.stmp.domain.market.domain.dto.request;
+package chungnam.ton.stmp.domain.market.dto.request;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 

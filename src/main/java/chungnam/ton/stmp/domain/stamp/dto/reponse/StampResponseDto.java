@@ -1,4 +1,4 @@
-package chungnam.ton.stmp.domain.stamp.domain.dto;
+package chungnam.ton.stmp.domain.stamp.dto.reponse;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.LocalDateTime;
