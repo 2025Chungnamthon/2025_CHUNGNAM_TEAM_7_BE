@@ -3,10 +3,9 @@ package chungnam.ton.stmp.domain.favorite;
 import chungnam.ton.stmp.domain.favorite.dto.FavRequestDto;
 import chungnam.ton.stmp.domain.favorite.dto.FavResponseDto;
 import chungnam.ton.stmp.domain.user.domain.UserPrincipal;
+import chungnam.ton.stmp.global.payload.ResponseCustom;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,7 +24,7 @@ public class FavController {
 
     // 즐겨찾기 추가
     @PostMapping
-    public ResponseEntity<FavResponseDto> addFavorite(
+    public ResponseCustom<FavResponseDto> addFavorite(
             @AuthenticationPrincipal UserPrincipal principal,
             @RequestBody FavRequestDto request
     ) {
@@ -34,12 +33,12 @@ public class FavController {
                 request
         );
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        return ResponseCustom.CREATED(response);
     }
 
     // 즐겨찾기 삭제
     @DeleteMapping("/{marketId}")
-    public ResponseEntity<Void> removeFavorite(
+    public ResponseCustom<Void> removeFavorite(
             @AuthenticationPrincipal UserPrincipal principal,
             @PathVariable Long marketId
     ) {
@@ -47,17 +46,17 @@ public class FavController {
                 principal.getUser().getId(), // User ID는 UserPrincipal에서 가져옴
                 marketId
         );
-        return ResponseEntity.noContent().build();
+        return ResponseCustom.OK();
     }
 
     @GetMapping
-    public ResponseEntity<List<FavResponseDto>> listFavorites(
+    public ResponseCustom<List<FavResponseDto>> listFavorites(
             @AuthenticationPrincipal UserPrincipal principal
     ) {
         List<FavResponseDto> favorites = favService.listFavorites(
                 principal.getUser().getId() // User ID는 UserPrincipal에서 가져옴
         );
-        return ResponseEntity.ok(favorites);
+        return ResponseCustom.OK(favorites);
     }
 
 
