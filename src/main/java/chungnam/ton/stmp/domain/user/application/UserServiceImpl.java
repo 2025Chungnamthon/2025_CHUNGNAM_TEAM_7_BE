@@ -97,7 +97,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<MarketResponse> getNotCompletedMarketByUserId(String rawToken) {
-        Long userId = jwtUtil.getUserIdFromToken(rawToken);
+        String token = jwtUtil.getJwt(rawToken);
+        Long userId = jwtUtil.getUserIdFromToken(token);
 
         Set<Long> rewardMarketIds = rewardRepository.findMarketsByUserRewards(userId).stream()
                 .map(MarketResponse::marketId)
@@ -123,7 +124,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<MarketResponse> getCompletedMarketByUserId(String rawToken) {
-        Long userId = jwtUtil.getUserIdFromToken(rawToken);
+        String token = jwtUtil.getJwt(rawToken);
+        Long userId = jwtUtil.getUserIdFromToken(token);
         List<MarketResponse> listByReward = rewardRepository.findMarketsByUserRewards(userId);
 
         return listByReward;

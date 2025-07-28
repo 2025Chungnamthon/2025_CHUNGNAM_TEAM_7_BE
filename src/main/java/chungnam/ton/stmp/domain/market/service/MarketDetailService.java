@@ -30,7 +30,8 @@ public class MarketDetailService {
     private final JwtUtil jwtUtil;
 
     public MarketDetailResponse getMarketDetailById(String rawToken, SearchMarketDetailRequest searchMarketDetailRequest) {
-        Long userId = jwtUtil.getUserIdFromToken(rawToken);
+        String token = jwtUtil.getJwt(rawToken);
+        Long userId = jwtUtil.getUserIdFromToken(token);
         userRepository.findById(userId).orElseThrow(() -> new DefaultException(ErrorCode.USER_NOT_FOUND_ERROR));
 
         Market market = marketRepository.findById(searchMarketDetailRequest.marketId())

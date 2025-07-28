@@ -40,9 +40,9 @@ public class FavController {
             @Parameter(description = "Accesstoken을 입력해주세요.", required = true) @RequestHeader("Authorization") String bearerToken,
             @RequestBody FavRequestDto request
     ) {
-        String rawToken = bearerToken.replace("Bearer ", "");
+        String token = jwtUtil.getJwt(bearerToken);
         //JWT 파싱해서 userId 추출
-        Long userId = jwtUtil.getUserIdFromToken(rawToken);
+        Long userId = jwtUtil.getUserIdFromToken(token);
         FavResponseDto response = favService.addBookmark(userId, request);
 
         return ResponseCustom.CREATED(response);
@@ -60,8 +60,8 @@ public class FavController {
             @Parameter(description = "Accesstoken을 입력해주세요.", required = true) @RequestHeader("Authorization") String bearerToken,
             @PathVariable Long marketId
     ) {
-        String rawToken = bearerToken.replace("Bearer ", "");
-        Long userId = jwtUtil.getUserIdFromToken(rawToken);
+        String token = jwtUtil.getJwt(bearerToken);
+        Long userId = jwtUtil.getUserIdFromToken(token);
         favService.removeBookmark(
                 userId,
                 marketId
@@ -85,9 +85,9 @@ public class FavController {
     public ResponseCustom<List<FavResponseDto>> listBookmarks(
             @Parameter(description = "Accesstoken을 입력해주세요.", required = true) @RequestHeader(name = "Authorization") String bearerToken
     ) {
-        String rawToken = bearerToken.replace("Bearer ", "");
+        String token = jwtUtil.getJwt(bearerToken);
         //JWT 파싱해서 userId 추출
-        Long userId = jwtUtil.getUserIdFromToken(rawToken);
+        Long userId = jwtUtil.getUserIdFromToken(token);
         List<FavResponseDto> favorites = favService.listBookmarks(
                 userId);
         return ResponseCustom.OK(favorites);

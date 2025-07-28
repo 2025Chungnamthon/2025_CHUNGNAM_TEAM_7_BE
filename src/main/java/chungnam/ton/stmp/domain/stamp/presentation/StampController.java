@@ -36,8 +36,8 @@ public class StampController {
     })
     @PostMapping("/scan")
     public ResponseCustom<StampResponseDto> scanStamp(@RequestHeader("Authorization") String bearerToken, @Valid @RequestBody StampRequestDto request) {
-        String rawToken = bearerToken.replace("Bearer ", "");
-        Long userId = jwtUtil.getUserIdFromToken(rawToken);
+        String token = jwtUtil.getJwt(bearerToken);
+        Long userId = jwtUtil.getUserIdFromToken(token);
 
         StampResponseDto dto = stampService.scanStamp(userId, request.qrId());
         return ResponseCustom.OK(dto);
