@@ -1,7 +1,10 @@
 package chungnam.ton.stmp.domain.user.domain;
 
 import chungnam.ton.stmp.domain.common.BaseEntity;
+import chungnam.ton.stmp.domain.favorite.Fav;
 import jakarta.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -29,6 +32,9 @@ public class User extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private UserRole role;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private List<Fav> favorites = new ArrayList<>();
 
     private String provider;
     private String providerId;
