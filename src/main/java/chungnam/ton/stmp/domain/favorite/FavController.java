@@ -37,7 +37,7 @@ public class FavController {
 //    @Parameter(name = "request", description = "즐겨찾기 requestDto", required = true)
     @PostMapping
     public ResponseCustom<FavResponseDto> addBookmark(
-            @Parameter(description = "Accesstoken을 입력해주세요.", required = true) @RequestHeader("bearerToken") String bearerToken,
+            @Parameter(description = "Accesstoken을 입력해주세요.", required = true) @RequestHeader("Authorization") String bearerToken,
             @RequestBody FavRequestDto request
     ) {
         String rawToken = bearerToken.replace("Bearer ", "");
@@ -57,7 +57,7 @@ public class FavController {
     @Parameter(name = "marketId", description = "삭제할 시장의 ID", required = true)
     @DeleteMapping("/{marketId}")
     public ResponseCustom<Void> removeBookmark(
-            @Parameter(description = "Accesstoken을 입력해주세요.", required = true) @RequestHeader("bearerToken") String bearerToken,
+            @Parameter(description = "Accesstoken을 입력해주세요.", required = true) @RequestHeader("Authorization") String bearerToken,
             @PathVariable Long marketId
     ) {
         String rawToken = bearerToken.replace("Bearer ", "");
@@ -83,7 +83,7 @@ public class FavController {
     })
     @GetMapping
     public ResponseCustom<List<FavResponseDto>> listBookmarks(
-            @Parameter(description = "Accesstoken을 입력해주세요.", required = true) @RequestHeader("bearerToken") String bearerToken
+            @Parameter(description = "Accesstoken을 입력해주세요.", required = true) @RequestHeader(name = "Authorization") String bearerToken
     ) {
         String rawToken = bearerToken.replace("Bearer ", "");
         //JWT 파싱해서 userId 추출

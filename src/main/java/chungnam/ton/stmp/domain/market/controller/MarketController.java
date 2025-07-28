@@ -1,6 +1,5 @@
 package chungnam.ton.stmp.domain.market.controller;
 
-import chungnam.ton.stmp.domain.favorite.dto.FavResponseDto;
 import chungnam.ton.stmp.domain.market.dto.request.SearchMarketDetailRequest;
 import chungnam.ton.stmp.domain.market.dto.request.SearchMarketRequest;
 import chungnam.ton.stmp.domain.market.dto.response.MarketDetailResponse;
@@ -9,7 +8,6 @@ import chungnam.ton.stmp.domain.market.service.MarketDetailService;
 import chungnam.ton.stmp.domain.market.service.SearchMarketService;
 import chungnam.ton.stmp.global.payload.ResponseCustom;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -17,10 +15,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -36,14 +31,17 @@ public class MarketController {
     @Operation(summary = "시장의 상세 정보 조회", description = "시장의 주소, 편의시설 등 상세 정보를 조회합니다.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "성공", content = {
-                    @Content(mediaType = "application/json", schema = @Schema(implementation = FavResponseDto.class))
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = MarketDetailResponse.class))
             }),
             @ApiResponse(responseCode = "400", description = "실패")
     })
 //    @Parameter(name = "request", description = "즐겨찾기 requestDto", required = true)
     @GetMapping("/detail")
-    public ResponseCustom<?> getMarketDetail(@RequestBody SearchMarketDetailRequest searchMarketDetailRequest) {
-        MarketDetailResponse response = marketDetailService.getMarketDetailById(searchMarketDetailRequest);
+    public ResponseCustom<?> getMarketDetail(
+            @RequestHeader(name = "Authorization", required = false) String bearerToken,
+            @RequestBody SearchMarketDetailRequest searchMarketDetailRequest
+    ) {
+        MarketDetailResponse response = marketDetailService.getMarketDetailById(bearerToken, searchMarketDetailRequest);
 
         return ResponseCustom.OK(response);
     }
@@ -60,7 +58,9 @@ public class MarketController {
             @ApiResponse(responseCode = "400", description = "실패")
     })
     @GetMapping("/search")
-    public ResponseCustom<?> searchMarkets(@RequestBody SearchMarketRequest searchMarketRequest) {
+    public ResponseCustom<?> searchMarkets(
+            @RequestBody SearchMarketRequest searchMarketRequest
+    ) {
         List<MarketResponse> responses = marketService.searchMarkets(searchMarketRequest);
         return ResponseCustom.OK(responses);
 //        return marketService.searchMarkets(searchMarketRequest);

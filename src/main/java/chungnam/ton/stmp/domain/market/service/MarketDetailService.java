@@ -5,27 +5,51 @@ import chungnam.ton.stmp.domain.market.domain.Market;
 import chungnam.ton.stmp.domain.market.dto.response.MarketDetailResponse;
 import chungnam.ton.stmp.domain.market.dto.request.SearchMarketDetailRequest;
 import chungnam.ton.stmp.domain.market.domain.repository.MarketRepository;
+import chungnam.ton.stmp.domain.stamp.domain.repository.StampRepository;
+import chungnam.ton.stmp.domain.stamp.dto.reponse.StampStatusResponse;
+import chungnam.ton.stmp.domain.user.domain.User;
+import chungnam.ton.stmp.domain.user.domain.repository.UserRepository;
 import chungnam.ton.stmp.global.error.DefaultException;
 import chungnam.ton.stmp.global.payload.ErrorCode;
+import chungnam.ton.stmp.global.util.jwt.JwtUtil;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Transactional
+@RequiredArgsConstructor
 @Service
 public class MarketDetailService {
     private final MarketRepository marketRepository;
+    private final StampRepository stampRepository;
+    private final UserRepository userRepository;
+    private final JwtUtil jwtUtil;
 
-    public MarketDetailService(MarketRepository marketRepository) {
-        this.marketRepository = marketRepository;
+    public MarketDetailResponse getMarketDetailById(String rawToken, SearchMarketDetailRequest searchMarketDetailRequest) {
+        Long userId = jwtUtil.getUserIdFromToken(rawToken);
+        userRepository.findById(userId).orElseThrow(() -> new DefaultException(ErrorCode.USER_NOT_FOUND_ERROR));
+
+        Market market = marketRepository.findById(searchMarketDetailRequest.marketId())
+                .orElseThrow(() -> new DefaultException(ErrorCode.MARKET_NOT_FOUND_ERROR));
+
+        StampStatusResponse status = getStampStatus(userId, market.getId());
+        return convertDto(market, status);
     }
 
-    public MarketDetailResponse getMarketDetailById(SearchMarketDetailRequest searchMarketDetailRequest) {
-        Long id = searchMarketDetailRequest.marketId();
-        return marketRepository.findById(id).map(this::convertDto).orElseThrow(() -> new DefaultException(ErrorCode.MARKET_NOT_FOUND_ERROR));
+    private StampStatusResponse getStampStatus(Long userId, Long marketId) {
+        int required = marketRepository.findById(marketId)
+                .orElseThrow(() -> new DefaultException(ErrorCode.MARKET_NOT_FOUND_ERROR))
+                .getStampAmount();
+        int actual = stampRepository.countByUserIdAndMarketId(userId, marketId);
+
+        return new StampStatusResponse(actual, required);
     }
 
-    private MarketDetailResponse convertDto(Market market) {
+    private MarketDetailResponse convertDto(Market market, StampStatusResponse s) {
         Facility f = market.getFacilities();
         List<String> facilityList = new ArrayList<>();
         if (f.isArcade()) facilityList.add("아케이드");
@@ -38,6 +62,9 @@ public class MarketDetailService {
                 .marketName(market.getMarketName())
                 .region(market.getRegion())
                 .address(market.getAddress())
+                .imgUrl(market.getImgUrl())
+                .actual(s.collected())
+                .required(s.required())
                 .facilityCount(facilityList.size())
                 .facilities(facilityList)
                 .build();

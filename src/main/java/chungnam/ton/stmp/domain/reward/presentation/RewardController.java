@@ -2,7 +2,6 @@ package chungnam.ton.stmp.domain.reward.presentation;
 
 import chungnam.ton.stmp.domain.reward.application.RewardService;
 import chungnam.ton.stmp.domain.reward.dto.response.RewardResponse;
-import chungnam.ton.stmp.domain.stamp.dto.reponse.StampResponseDto;
 import chungnam.ton.stmp.global.payload.ResponseCustom;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -10,9 +9,7 @@ import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,7 +28,7 @@ public class RewardController {
             content = @Content(
                     mediaType = "application/json",
                     array = @ArraySchema(
-                            schema = @Schema(implementation = StampResponseDto.class)
+                            schema = @Schema(implementation = RewardResponse.class)
                     )
             )
     )
@@ -46,7 +43,7 @@ public class RewardController {
             content = @Content(
                     mediaType = "application/json",
                     array = @ArraySchema(
-                            schema = @Schema(implementation = StampResponseDto.class)
+                            schema = @Schema(implementation = RewardResponse.class)
                     )
             )
     )

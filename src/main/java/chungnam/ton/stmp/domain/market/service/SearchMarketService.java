@@ -1,12 +1,16 @@
 package chungnam.ton.stmp.domain.market.service;
 
 import chungnam.ton.stmp.domain.market.domain.Market;
+import chungnam.ton.stmp.domain.market.domain.repository.MarketRepository;
 import chungnam.ton.stmp.domain.market.dto.request.SearchMarketRequest;
 import chungnam.ton.stmp.domain.market.dto.response.MarketResponse;
-import chungnam.ton.stmp.domain.market.domain.repository.MarketRepository;
+import chungnam.ton.stmp.domain.stamp.domain.repository.StampRepository;
+import chungnam.ton.stmp.domain.user.domain.repository.UserRepository;
+import chungnam.ton.stmp.global.util.jwt.JwtUtil;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.annotation.PostConstruct;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
@@ -14,17 +18,16 @@ import org.springframework.stereotype.Service;
 import java.io.InputStream;
 import java.util.List;
 
+@RequiredArgsConstructor
 @Slf4j
 @Service
 public class SearchMarketService {
 
     private final MarketRepository marketRepository;
+    private final StampRepository stampRepository;
+    private final UserRepository userRepository;
     private final ObjectMapper objectMapper;
-
-    public SearchMarketService(MarketRepository marketRepository, ObjectMapper objectMapper) {
-        this.marketRepository = marketRepository;
-        this.objectMapper = objectMapper;
-    }
+    private final JwtUtil jwtUtil;
 
     @PostConstruct
     public void init() {
@@ -53,4 +56,6 @@ public class SearchMarketService {
         List<MarketResponse> responses = marketRepository.findByMarketNameContainingOrRegionContaining(keyword, keyword).stream().map(MarketResponse::fromEntity).toList();
         return responses;
     }
+
+
 }

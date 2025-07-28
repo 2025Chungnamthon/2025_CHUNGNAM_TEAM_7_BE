@@ -39,33 +39,6 @@ public class StampQueryDslRepositoryImpl implements StampQueryDslRepository {
     }
 
     @Override
-    public List<MarketResponse> findMarketsByUserRewards(Long userId) {
-        QReward reward = QReward.reward;
-        QMarketHasGiftCard mg = QMarketHasGiftCard.marketHasGiftCard;
-        QMarket market = QMarket.market;
-        QFav fav = QFav.fav;
-
-        return queryFactory
-                .select(new QMarketResponse(
-                        market.id,
-                        market.marketName,
-                        market.region,
-                        market.address,
-                        fav.id.isNotNull(),
-                        Expressions.asBoolean(true)
-                ))
-                .from(reward)
-                .join(reward.giftCard)          // reward → giftCard
-                .join(mg).on(mg.giftCard.eq(reward.giftCard))  // giftCard → MarketHasGiftCard
-                .join(mg.market, market)        // MarketHasGiftCard → Market
-                .leftJoin(fav).on(fav.user.id.eq(userId)
-                        .and(fav.market.eq(market)))
-                .where(reward.user.id.eq(userId))
-                .distinct()
-                .fetch();
-    }
-
-    @Override
     public List<MarketResponse> findMarketsByUserStamps(Long userId) {
         QStamp stamp = QStamp.stamp;
         QQrCode qrCode = QQrCode.qrCode;
@@ -79,7 +52,7 @@ public class StampQueryDslRepositoryImpl implements StampQueryDslRepository {
                         market.region,
                         market.address,
                         fav.id.isNotNull(),
-                        Expressions.asBoolean(true)
+                        Expressions.asBoolean(false)
                 ))
                 .from(stamp)
                 .join(stamp.qrCode, qrCode)        // stamp → qrCode

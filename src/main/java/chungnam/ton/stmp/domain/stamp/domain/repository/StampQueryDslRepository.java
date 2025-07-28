@@ -6,6 +6,5 @@ import java.util.List;
 
 public interface StampQueryDslRepository {
     int countByUserIdAndMarketId(Long userId, Long marketId);
-    List<MarketResponse> findMarketsByUserRewards(Long userId);
     List<MarketResponse> findMarketsByUserStamps(Long userId);
 }

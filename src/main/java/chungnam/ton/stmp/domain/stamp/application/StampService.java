@@ -68,14 +68,5 @@ public class StampService {
                 .totalStampCount((int) total)
                 .build();
     }
-
-    public StampStatusResponse getStampStatus(Long userId, Long marketId) {
-        int required = marketRepository.findById(marketId)
-                .orElseThrow(() -> new DefaultException(ErrorCode.MARKET_NOT_FOUND_ERROR))
-                .getStampAmount();
-        int actual = stampRepository.countByUserIdAndMarketId(userId, marketId);
-
-        return new StampStatusResponse(actual, required);
-    }
 }
 
