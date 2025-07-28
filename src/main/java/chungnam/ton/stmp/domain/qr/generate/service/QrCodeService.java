@@ -18,10 +18,7 @@ import com.google.zxing.common.BitMatrix;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.Base64;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class QrCodeService {
@@ -34,6 +31,7 @@ public class QrCodeService {
         this.qrCodeRepository = qrCodeRepository;
         this.marketRepository = marketRepository;
     }
+    String base64Image;
 
     public QrGenerateResult createQr(Long marketId, String placeName) throws WriterException, IOException {
         // 1. 유효한 마켓 ID인지 확인
@@ -42,53 +40,60 @@ public class QrCodeService {
 
         if (!MarketPlaceRegistry.isValidPlace(marketId, placeName)) {
             throw new IllegalArgumentException("유효하지 않은 장소입니다.");
+
         }
+        int durationSeconds = 10;  // 테스트용: 10초 뒤 만료
 
-        // 2. 고유 QR ID 생성 및 JSON 형식의 페이로드 구성
-        String qrId = UUID.randomUUID().toString();
-        String qrImageUrl = String.format(
-                "{\"qrId\":\"%s\",\"marketId\":%d,\"placeName\":\"%s\"}",
-                qrId, marketId, placeName
-        );
 
-        // 3. ZXing으로 QR 이미지 생성
-        int width = 800; int height = 800;
+        QrCode qrCode = qrCodeRepository
+                .findByMarket_IdAndPlaceName(marketId, placeName)
+                .orElseGet(() -> {
+                    // ▶ 최초 생성 시 반드시 NOT NULL 컬럼까지 세팅 후 save 분리
+                    QrCode tmp = new QrCode();
+                    tmp.setMarket(market);
+                    tmp.setPlaceName(placeName);
+                    // 임시값 세팅: NOT NULL 제약 있는 필드 모두 초기화
+                    tmp.setExpiredAt(LocalDateTime.now().plusSeconds(10)); // 테스트용 만료
+                    tmp.setQrImageUrl("");    // 나중에 덮어쓸 임시 문자열
+                    tmp.setDuration(durationSeconds);
+                    return qrCodeRepository.save(tmp);  // 1단계 INSERT: ID 확보 및 NOT NULL 만족
+                });
+
+        int duration = 1;
+        LocalDateTime createdAt = qrCode.getCreatedAt();
+        //LocalDateTime expiredAt = createdAt.plusMinutes(duration);
+        QrGenerateResult result = new QrGenerateResult(qrCode, base64Image);
+
+        LocalDateTime expiredAt = createdAt.plusSeconds(durationSeconds);
 
         Map<EncodeHintType, Object> hints = new HashMap<>();
         hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
+        int width = 800;
+        int height = 800;
 
+
+
+        if (qrCode.getExpiredAt() == null || createdAt.isAfter(qrCode.getExpiredAt())) {
+            String setQrImageUrl = String.format(
+                    "{\"qrId\":\"%s\",\"marketId\":%d,\"placeName\":\"%s\",\"nonce\":\"%s\"}",
+                    qrCode.getId(), marketId, placeName, UUID.randomUUID()
+            );
+            qrCode.setQrImageUrl(setQrImageUrl);
+            qrCode.setExpiredAt(createdAt.plusSeconds(durationSeconds));
+            qrCode.setDuration(durationSeconds);
+            qrCode = qrCodeRepository.save(qrCode);  // 2단계 UPDATE: 진짜 payload 반영
+        }
+
+        // 3. ZXing으로 QR 이미지 생성
+        String qrImageUrl = qrCode.getQrImageUrl();
         BitMatrix bitMatrix = new MultiFormatWriter()
-                .encode(qrImageUrl,BarcodeFormat.QR_CODE,width,height,hints);
-        String base64Image;
+                .encode(qrImageUrl, BarcodeFormat.QR_CODE, width, height, hints);
         try (ByteArrayOutputStream out = new ByteArrayOutputStream()) {
             MatrixToImageWriter.writeToStream(bitMatrix, "PNG", out);
             base64Image = Base64.getEncoder().encodeToString(out.toByteArray());
-
         }
-        marketId = 1L;
-
-        // 4. QR 코드 엔티티 생성 및 저장
-        int duration = 1;
-        LocalDateTime createdAt = LocalDateTime.now();
-        LocalDateTime expiredAt = createdAt.plusMinutes(duration);
-
-        QrCode qrCode = new QrCode();
-        qrCode.setQrId(qrId);
-        qrCode.setQrImageUrl(qrImageUrl);
-        qrCode.setCreatedAt(createdAt);
-        qrCode.setExpiredAt(expiredAt);
-        qrCode.setDuration(duration);
-        //qrCode.setMarket(market);
-        qrCode.setPlaceName(placeName);
-
-        qrCode.setMarketId(marketId);
-
-        qrCodeRepository.save(qrCode);
-
-        return new QrGenerateResult(qrCode,base64Image);
 
 
+        return new QrGenerateResult(qrCode, base64Image);
     }
-
-
 }
