@@ -16,6 +16,10 @@ public record SignupRequest(
 
         @NotBlank(message = "비밀번호는 필수입니다.")
         @Size(min = 8, max = 15, message = "비밀번호는 8 ~ 15글자여야 합니다.")
-        String password
+        String password,
+
+        @NotBlank(message = "비밀번호 확인용입니다.")
+        @Size(min = 8, max = 15, message = "비밀번호는 8 ~ 15글자여야 합니다.")
+        String passwordChecked
 ) {
 }
